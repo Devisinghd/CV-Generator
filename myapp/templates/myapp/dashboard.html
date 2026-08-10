@@ -11,9 +11,9 @@
         <p>{{resume.email}}</p>
         <div>
           <a href="{% url 'resume' resume.id  %}">Preview</a>
-          <a href="">Download</a>
-          <a href="">Edit</a>
-          <a href="">Delete</a>
+          <a href="{% url 'download_resume' resume.id %}">Download</a>
+          <a href="{% url 'edit_resume' resume.id %}">Edit</a>
+          <a href="{% url 'delete_resume' resume.id %}">Delete</a>
         </div>
       </div>
 
