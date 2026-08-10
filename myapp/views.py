@@ -32,12 +32,16 @@ def save_profile(request):
     return render(request,'myapp/modern_create_profile.html')
 
 def resume(request,id):
-    user_profile = Profile.objects.get(id=id)
+    user_profile = Profile.objects.filter(id=id).first()
+    if not user_profile:
+        return redirect('dashboard')
     return render(request,'myapp/modern-resume.html',{'user_profile':user_profile})
 
 
 def download_resume(request,id):
-    user_profile = get_object_or_404(Profile,id=id)
+    user_profile = Profile.objects.filter(id=id).first()
+    if not user_profile:
+        return redirect('dashboard')
     template_path = 'myapp/download_resume.html'
     context=  {'profile':user_profile}
     template = get_template(template_path)
@@ -52,12 +56,16 @@ def download_resume(request,id):
 
 
 def delete_profile(request,id):
-    profile = get_object_or_404(Profile,id=id)
+    profile = Profile.objects.filter(id=id).first()
+    if not profile:
+        return redirect('dashboard')
     profile.delete()
     return redirect('dashboard')
 
 def update_profile(request,id):
-    profile = get_object_or_404(Profile,id=id)
+    profile = Profile.objects.filter(id=id).first()
+    if not profile:
+        return redirect('dashboard')
     if request.method=="POST":
         profile.name = request.POST.get('name')
         profile.email = request.POST.get('email')
