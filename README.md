@@ -64,6 +64,8 @@ python manage.py runserver
 
 6. Open the app in your browser at http://127.0.0.1:8000/
 
+7. Available Live at - https://cv-generator-3d1d.onrender.com/
+
 ## Docker Deployment
 
 Build and run the app with Docker:
