@@ -51,7 +51,27 @@ def download_resume(request,id):
     return response
 
 
+def delete_profile(request,id):
+    profile = get_object_or_404(Profile,id=id)
+    profile.delete()
+    return redirect('dashboard')
 
+def update_profile(request,id):
+    profile = get_object_or_404(Profile,id=id)
+    if request.method=="POST":
+        profile.name = request.POST.get('name')
+        profile.email = request.POST.get('email')
+        profile.phone = request.POST.get('phone')
+        profile.degree = request.POST.get('degree')
+        profile.school = request.POST.get('school')
+        profile.university = request.POST.get('university')
+        profile.summary = request.POST.get('summary')
+        profile.previous_work = request.POST.get('previous_work')
+        profile.skills = request.POST.get('skills')
+        profile.save()
+        return redirect('dashboard')
+
+    return render(request,'myapp/modern_update_profile.html',{'profile':profile})
 
 
     
