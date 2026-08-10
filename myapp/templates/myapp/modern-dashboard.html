@@ -240,9 +240,8 @@
                 Preview
               </a>
 
-              <!-- Update this href to your PDF download route when available -->
               <a
-                href="#"
+                href="{% url 'download_resume' resume.id %}"
                 class="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-700 hover:text-emerald-800"
               >
                 <svg
@@ -262,7 +261,7 @@
               </a>
 
               <a
-                href=""
+                href="{% url 'update_profile' resume.id %}"
                 class="inline-flex items-center gap-1.5 text-sm font-medium text-amber-700 hover:text-amber-800"
               >
                 <svg
@@ -278,7 +277,7 @@
                 Edit
               </a>
 
-              <form action="#" method="post" class="inline">
+              <form action="{% url 'delete_profile' resume.id %}" method="post" class="inline">
                 {% csrf_token %}
                 <button
                   type="submit"
